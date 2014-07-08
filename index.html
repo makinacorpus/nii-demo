@@ -11,6 +11,17 @@
     <div id="slider" style="width: 365px;"></div>
     <script>
       $(function(){
+
+          var arrayOfImages = [];
+          for (i = 0 ; i <= 482 ; i++) {
+              var value = i;
+              if (value < 10)
+                  value = "00" + value;
+              else if (value < 100)
+                  value = "0" + value;
+              $('<img/>')[0].src = "static/stack/citron.sub40"+ value +".jpg";
+          }
+
           $('#slider').slider({
               min: 0,
               max: 482,
