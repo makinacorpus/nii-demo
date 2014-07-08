@@ -9,17 +9,27 @@
   <body>
     <img id="image" src="static/stack/citron.sub40241.jpg" />
     <div id="slider" style="width: 365px;"></div>
+    <div id="loading" style="width: 365px;"><div id="loading-label">0/482 images</div></div>
     <script>
       $(function(){
-
-          var arrayOfImages = [];
+          $('#loading').progressbar({
+              max: 482,
+              change: function(event, ui){
+                  $('#loading-label').text($('#loading').progressbar("value") + '/482 images');
+              }
+          });
           for (i = 0 ; i <= 482 ; i++) {
               var value = i;
               if (value < 10)
                   value = "00" + value;
               else if (value < 100)
                   value = "0" + value;
-              $('<img/>')[0].src = "static/stack/citron.sub40"+ value +".jpg";
+              var img = $('<img/>');
+              img.load(function(){
+                  var value = $('#loading').progressbar("value");
+                  $('#loading').progressbar("value", value + 1);
+              });
+              img[0].src = "static/stack/citron.sub40"+ value +".jpg";
           }
 
           $('#slider').slider({
