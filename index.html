@@ -9,7 +9,9 @@
   <body>
     <img id="image" src="static/stack/citron.sub40241.jpg" />
     <div id="slider" style="width: 365px;"></div>
-    <div id="loading" style="width: 365px;"><div id="loading-label">0/482 images</div></div>
+    <div id="loading" style="width: 365px; position: relative;">
+      <div id="loading-label" style="position: absolute; left: 30%; top: 4px;">0/482 images</div>
+    </div>
     <script>
       $(function(){
           $('#loading').progressbar({
