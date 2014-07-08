@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <title>nii example</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+  </head>
+  <body>
+    <img id="image" src="static/stack/citron.sub40241.jpg" />
+    <div id="slider" style="width: 365px;"></div>
+    <script>
+      $(function(){
+          $('#slider').slider({
+              min: 0,
+              max: 482,
+              value: 241,
+              slide: function(event, ui) {
+                  var value = ui.value;
+                  if (value < 10)
+                      value = "00" + value;
+                  else if (value < 100)
+                      value = "0" + value;
+                  $('#image').attr("src", "static/stack/citron.sub40"+ value +".jpg");
+              },
+          });
+      });
+    </script>
+  </body>
+</html>
